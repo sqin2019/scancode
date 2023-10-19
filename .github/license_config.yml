@@ -1,0 +1,19 @@
+license:
+  main: apache-2.0
+  category: Permissive
+  additional:
+    - bsd-new
+  report_missing: false
+copyright:
+  check: false
+exclude:
+  extensions:
+    - yml
+    - yaml
+    - html
+    - rst
+    - conf
+    - cfg
+  langs:
+    - HTML
+
