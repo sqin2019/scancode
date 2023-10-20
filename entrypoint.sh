@@ -8,6 +8,7 @@ git config user.email "publish-to-github-action@users.noreply.github.com"
 
 mkdir -p ${1}
 # Move modified, added, and renamed files
+echo "run git diff"
 for f in `git  diff --name-only --diff-filter=AMR origin/main..`; do
 	echo "found new file: $f";
 	cp --parents  $f ${1};

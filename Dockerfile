@@ -1,6 +1,6 @@
 FROM python:3.10
 
-ENV SCANCODE_RELEASE=30.1.0
+ENV SCANCODE_RELEASE=32.0.8
 
 RUN apt-get update && apt-get install -y bzip2 xz-utils zlib1g libxml2-dev libxslt1-dev
 
