@@ -1,5 +1,5 @@
 # action.yml
-name: 'ScancodeSQ'
+name: 'Scancode'
 description: 'Scan licenses and copyrights in code'
 inputs:
   directory-to-scan:  # id of input
