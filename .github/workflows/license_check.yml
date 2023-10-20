@@ -23,7 +23,7 @@ jobs:
       with:
         directory-to-scan: 'scan/'
     - name: Artifact Upload
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@main
       with:
         name: scancode
         path: ./artifacts
