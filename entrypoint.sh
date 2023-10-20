@@ -1,14 +1,14 @@
 #!/bin/sh -l
 
 # Copyright (c)
-# SPDX-License-Identifier: 
+# SPDX-License-Identifier:
 
 git config user.name "Automated Publisher"
 git config user.email "publish-to-github-action@users.noreply.github.com"
 
 mkdir -p ${1}
 # Move modified, added, and renamed files
-for f in `git  diff --name-only --diff-filter=AMR origin/${GITHUB_BASE_REF}..`; do
+for f in `git  diff --name-only --diff-filter=AMR origin/main..`; do
 	echo "found new file: $f";
 	cp --parents  $f ${1};
 done
