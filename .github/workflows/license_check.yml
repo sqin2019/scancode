@@ -19,7 +19,7 @@ jobs:
         echo $GITHUB_BASE_REF
     - name: Scan the code
       id: scancode
-      uses: sqin2019/action_scancode@main
+      uses: sqin2019/scancode@main
       with:
         directory-to-scan: 'scan/'
     - name: Artifact Upload
