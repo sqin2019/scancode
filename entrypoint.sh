@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-# Copyright (c)
+# Copyright (c) 
 # SPDX-License-Identifier:
 
 git config user.name "Automated Publisher"
