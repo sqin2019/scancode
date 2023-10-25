@@ -1,0 +1,39 @@
+name: Scancode
+
+on: [pull_request]
+
+jobs:
+  scancode_job:
+    runs-on: ubuntu-latest
+    name: Scan code for licenses
+    steps:
+      - uses: 'actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9' # ratchet:actions/checkout@v3
+        with:
+          fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
+      - name: 'Get changed files'
+        id: 'changed-files'
+        uses: 'tj-actions/changed-files@fb20f4d24890fadc539505b1746d260504b213d0' # ratchet:tj-actions/changed-files@v36
+      - name: 'Copy changed files'
+        id: 'copy-changed-files'
+        run: |
+          echo ${{ env.RUNNER_TEMP }}
+          sudo mkdir -p ${{ env.RUNNER_TEMP }}/scancode/snapshot-file-change
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            echo "$file was changed"
+            sudo cp --parents $file ${{ env.RUNNER_TEMP }}/scancode/snapshot-file-change
+            echo "$file was copied to ${{ env.RUNNER_TEMP }}/scancode/snapshot-file-change"
+          done
+      - name: Scan the code
+        id: scancode
+        uses: sqin2019/scancode@main
+        with:
+          directory-to-scan: '${{ env.RUNNER_TEMP }}/scancode/snapshot-file-change'
+      - name: Artifact Upload
+        uses: actions/upload-artifact@v1
+        with:
+          name: scancode
+          path: ./artifacts
+
+      - name: Verify
+        run: |
+          test ! -s ./artifacts/report.txt || (cat ./artifacts/report.txt && exit 1 )
