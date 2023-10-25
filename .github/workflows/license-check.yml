@@ -25,7 +25,7 @@ jobs:
           done
       - name: Scan the code
         id: scancode
-        uses: sqin2019/scancode/.github/actions/action.yml@main
+        uses: sqin2019/scancode@main
         with:
           directory-to-scan: '${{ env.RUNNER_TEMP }}/scancode/snapshot-file-change'
       - name: Artifact Upload
