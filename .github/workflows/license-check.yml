@@ -26,7 +26,7 @@ jobs:
         id: scancode
         uses: sqin2019/scancode@main
         with:
-          directory-to-scan: 'scancode/snapshot-file-change'
+          directory-to-scan: '.'
       # - name: Artifact Upload
       #   uses: actions/upload-artifact@v1
       #   with:
