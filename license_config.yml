@@ -19,7 +19,7 @@ license:
     - bsd-new
   report_missing: false
 copyright:
-  check: false
+  check: true
 exclude:
   extensions:
     - yml
