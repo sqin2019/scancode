@@ -16,6 +16,7 @@ license:
   main: apache-1.0
   category: Permissive
   additional:
+    - bsd-new
   report_missing: false
 copyright:
   check: false
