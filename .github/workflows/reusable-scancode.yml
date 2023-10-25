@@ -36,7 +36,7 @@ jobs:
         uses: sqin2019/scancode@main
         with:
           directory-to-scan: '${{ env.dir }}'
-          config: '${{ inputs.config }}'
+          config: '${{ inputs.config || ''default_license_config.yml''}}'
 
       - name: Verify
         run: |
