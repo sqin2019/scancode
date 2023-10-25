@@ -14,4 +14,4 @@ cd /scancode-toolkit
 	--html /github/workspace/artifacts/scancode.html
 
 
-python /license_check.py -c /github/workspace/license_config.yml -s /github/workspace/artifacts/scancode.json  -f /github/workspace/$1 -o /github/workspace/artifacts/report.txt
+python /license_check.py -c /github/workspace/$2 -s /github/workspace/artifacts/scancode.json  -f /github/workspace/$1 -o /github/workspace/artifacts/report.txt

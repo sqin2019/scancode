@@ -18,9 +18,14 @@ inputs:
   directory-to-scan:
     description: 'Which directory to scan'
     required: false
-    default: 'scancode-files'
+    default: '.'
+  config:
+    description: 'Scancode config file'
+    required: false
+    default: 'default_license_config.yml'
 runs:
   using: 'docker'
   image: 'scripts/action.dockerfile'
   args:
     - ${{ inputs.directory-to-scan }}
+    - ${{ inputs.config }}
