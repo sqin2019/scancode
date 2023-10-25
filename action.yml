@@ -21,6 +21,6 @@ inputs:
     default: 'scancode-files'
 runs:
   using: 'docker'
-  image: 'action.dockerfile'
+  image: 'scripts/action.dockerfile'
   args:
     - ${{ inputs.directory-to-scan }}
