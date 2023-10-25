@@ -13,7 +13,7 @@
 # limitations under the License.
 
 license:
-  main: apache-1.0
+  main: apache-2.0
   category: Permissive
   additional:
     - bsd-new

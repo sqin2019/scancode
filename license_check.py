@@ -59,8 +59,11 @@ def analyze_file(config_file, scancode_file, scanned_files_dir):
             if file['type'] == 'directory':
                 continue
 
+            print("suhong file: " + file)
             orig_path = str(file['path']).replace(scanned_files_dir, '')
             licenses = file['licenses']
+            print("suhong licenses: " + licenses)
+            print("suhong copyright: " + file['copyrights'])
             file_type = file.get("file_type")
             kconfig = "Kconfig" in orig_path and file_type in ['ASCII text']
             check = False
@@ -83,6 +86,7 @@ def analyze_file(config_file, scancode_file, scanned_files_dir):
                     report += ("* {} missing license.\n".format(orig_path))
                 else:
                     for lic in licenses:
+                        print("suhong lic: " + lic)
                         if lic['key'] not in more_lic:
                             report += ("* {} has invalid license: {}\n".format(
                                 orig_path, lic['key']))
