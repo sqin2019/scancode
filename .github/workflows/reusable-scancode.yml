@@ -31,6 +31,8 @@ jobs:
             sudo cp --parents $file ${{ env.dir }}
             echo "$file was copied to ${{ env.dir }}"
           done
+      - run: |
+          ls .
       - name: Scan the code
         id: scancode
         uses: sqin2019/scancode@main
