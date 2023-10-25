@@ -16,18 +16,17 @@ jobs:
       - name: 'Copy changed files'
         id: 'copy-changed-files'
         run: |
-          echo ${{ env.RUNNER_TEMP }}
-          sudo mkdir -p ${{ env.RUNNER_TEMP }}/scancode/snapshot-file-change
+          sudo mkdir -p scancode/snapshot-file-change
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
-            sudo cp --parents $file ${{ env.RUNNER_TEMP }}/scancode/snapshot-file-change
-            echo "$file was copied to ${{ env.RUNNER_TEMP }}/scancode/snapshot-file-change"
+            sudo cp --parents $file scancode/snapshot-file-change
+            echo "$file was copied to scancode/snapshot-file-change"
           done
       - name: Scan the code
         id: scancode
         uses: sqin2019/scancode@main
         with:
-          directory-to-scan: '${{ env.RUNNER_TEMP }}/scancode/snapshot-file-change'
+          directory-to-scan: 'scancode/snapshot-file-change'
       - name: Artifact Upload
         uses: actions/upload-artifact@v1
         with:
