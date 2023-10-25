@@ -1,0 +1,16 @@
+name: check
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+
+jobs:
+  scancode_job:
+    runs-on: ubuntu-latest
+    name: Scan code for licenses
+    steps:
+      - uses: 'sqin2019/scancode/.github/workflows/reusable-scancode@main' 
+
+

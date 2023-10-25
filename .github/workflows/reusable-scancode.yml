@@ -1,6 +1,15 @@
-name: Scancode
+name: reusable-scancode
 
-on: [pull_request]
+on:
+  workflow_call:
+    inputs:
+      config:
+        description: 'Scancode config'
+        type: 'string'
+        required: false
+
+env:
+  dir: 'scancode/snapshot-file-change'
 
 jobs:
   scancode_job:
@@ -16,17 +25,18 @@ jobs:
       - name: 'Copy changed files'
         id: 'copy-changed-files'
         run: |
-          sudo mkdir -p scancode/snapshot-file-change
+          sudo mkdir -p ${{ env.dir }}
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
-            sudo cp --parents $file scancode/snapshot-file-change
-            echo "$file was copied to scancode/snapshot-file-change"
+            sudo cp --parents $file ${{ env.dir }}
+            echo "$file was copied to ${{ env.dir }}"
           done
       - name: Scan the code
         id: scancode
         uses: sqin2019/scancode@main
         with:
-          directory-to-scan: 'scancode/snapshot-file-change'
+          directory-to-scan: '${{ env.dir }}'
+          config: '${{ inputs.config }}'
 
       - name: Verify
         run: |
