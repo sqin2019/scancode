@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-mkdir -p /github/workflow
+# mkdir -p /github/workflow
 
 cd /scancode-toolkit
 
@@ -10,7 +10,7 @@ cd /scancode-toolkit
   $2
 
 pwd .
-ls -al
+ls /github/workflow -al
 
 echo "json=scancode.json" >> $GITHUB_OUTPUT
 echo "csv=scancode.csv" >> $GITHUB_OUTPUT
