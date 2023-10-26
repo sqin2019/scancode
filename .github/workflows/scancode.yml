@@ -33,7 +33,7 @@ jobs:
     name: Scan code for licenses
     steps:
       - run: |
-          mkdir -p ./directory-to-scan
+          mkdir -p directory-to-scan
       - uses: 'actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9' # ratchet:actions/checkout@v3
         with:
           path: 'directory-to-scan'
@@ -41,7 +41,7 @@ jobs:
         id: 'scancode'
         uses: sqin2019/scancode@main
         with:
-          directory-to-scan: './directory-to-scan/${{ inputs.directory-to-scan }}'
+          directory-to-scan: 'directory-to-scan/${{ inputs.directory-to-scan }}'
           commands: '${{ inputs.commands }}'
       - run: |
           pwd .
