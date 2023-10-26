@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-# mkdir -p /github/workspace/artifacts
+mkdir -p /github/workspace/artifacts
 
 cd /scancode-toolkit
 # ./scancode \
