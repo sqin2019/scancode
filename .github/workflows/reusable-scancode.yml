@@ -17,6 +17,8 @@ jobs:
       - name: Scan the code
         id: scancode
         uses: sqin2019/scancode@main
+        with:
+          directory-to-scan: '.github/workflows'
       - name: 'json'
         run: |
           cat ./artifacts/scancode.json

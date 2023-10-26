@@ -19,8 +19,13 @@ inputs:
     description: 'Which directory to scan'
     required: false
     default: '.'
+  commands:
+    description: 'Scancode commands'
+    required: false
+    default: '--license --package --copyright --license-score=70'
 runs:
   using: 'docker'
   image: 'action.dockerfile'
   args:
     - ${{ inputs.directory-to-scan }}
+    - ${{ inputs.commands }}

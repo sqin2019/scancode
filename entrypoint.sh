@@ -13,12 +13,16 @@ cd /scancode-toolkit
 # 	--json /github/workspace/artifacts/scancode.json \
 # 	--html /github/workspace/artifacts/scancode.html
 
-./scancode \
-	--license --package --copyright \
-	--license-score=70 \
-	--verbose /github/workspace/$1 \
-	--json /github/workspace/artifacts/scancode.json \
-	--csv /github/workspace/artifacts/scancode.csv
+# ./scancode \
+# 	--license --package --copyright \
+# 	--license-score=70 \
+# 	--verbose /github/workspace/$1 \
+# 	--json /github/workspace/artifacts/scancode.json \
+# 	--csv /github/workspace/artifacts/scancode.csv
 
+./scancode /github/workspace/$1 \
+	--json /github/workspace/artifacts/scancode.json \
+	--html /github/workspace/artifacts/scancode.html \
+  $2
 
 # python /license_check.py -c /github/workspace/license_config.yml -s /github/workspace/artifacts/scancode.json  -f /github/workspace/$1 -o /github/workspace/artifacts/report.txt
