@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/bin/sh -l
 
 # mkdir -p /github/workspace/artifacts
 
