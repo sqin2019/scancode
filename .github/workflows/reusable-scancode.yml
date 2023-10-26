@@ -21,4 +21,4 @@ jobs:
           cat ./artifacts/scancode.json
       - name: 'cvs'
         run: |
-          cat ./artifacts/scancode.json
+          cat ./artifacts/scancode.csv
