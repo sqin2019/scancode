@@ -40,9 +40,13 @@ jobs:
         with:
           directory-to-scan: '${{ inputs.directory-to-scan }}'
           commands: '${{ inputs.commands }}'
+      - run: |
+          pwd .
+      - run: |
+          echo ${{ github.workspace }}
       - name: 'json'
         run: |
-          cat ${{ steps.scancode.output.json }}
+          cat ${{ steps.scancode.outputs.json }}
       - name: 'cvs'
         run: |
-          cat ${{ steps.scancode.output.csv }}
+          cat ${{ steps.scancode.outputs.csv }}
