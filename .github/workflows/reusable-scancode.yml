@@ -12,10 +12,10 @@ jobs:
     name: Scan code for licenses
     steps:
       - uses: 'actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9' # ratchet:actions/checkout@v3
+      - run: 'mkdir -p ./artifacts'
       - name: Scan the code
         id: scancode
         uses: sqin2019/scancode@main
-
       - name: 'json'
         run: |
           cat ./artifacts/scancode.json
