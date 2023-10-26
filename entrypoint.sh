@@ -1,5 +1,7 @@
 #!/bin/sh -l
 
+mkdir -p /github/workflow
+
 cd /scancode-toolkit
 
 ./scancode /github/workflow/$1 \
