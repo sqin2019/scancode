@@ -41,7 +41,7 @@ jobs:
         id: 'scancode'
         uses: sqin2019/scancode@main
         with:
-          directory-to-scan: 'directory-to-scan/${{ inputs.directory-to-scan }}'
+          directory-to-scan: './directory-to-scan/${{ inputs.directory-to-scan }}'
           commands: '${{ inputs.commands }}'
       - run: |
           pwd .
