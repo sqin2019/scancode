@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # mkdir -p /github/workspace/artifacts
 
 cd /scancode-toolkit
