@@ -34,6 +34,7 @@ jobs:
     steps:
       - run: |
           mkdir -p directory-to-scan
+          ls -al
       - uses: 'actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9' # ratchet:actions/checkout@v3
         with:
           path: 'directory-to-scan'
