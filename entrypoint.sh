@@ -25,6 +25,9 @@ cd /scancode-toolkit
 	--csv /github/workspace/artifacts/scancode.csv \
   $2
 
+pwd .
+ls /github/workspace
+
 echo "json=artifacts/scancode.json" >> $GITHUB_OUTPUT
 echo "csv=artifacts/scancode.csv" >> $GITHUB_OUTPUT
 

@@ -42,6 +42,7 @@ jobs:
           commands: '${{ inputs.commands }}'
       - run: |
           pwd .
+          ls -al
       - run: |
           echo ${{ github.workspace }}
       - name: 'json'
