@@ -1,14 +1,10 @@
 name: check
 
 on:
-  pull_request:
-    branches:
-      - 'main'
+  workflow_dispatch:
 
 
 jobs:
   scancode_job:
     name: Scan code for licenses
     uses: 'sqin2019/scancode/.github/workflows/reusable-scancode.yml@main'
-
-

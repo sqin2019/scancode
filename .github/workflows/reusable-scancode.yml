@@ -2,11 +2,6 @@ name: reusable-scancode
 
 on:
   workflow_call:
-    inputs:
-      config:
-        description: 'Scancode config'
-        type: 'string'
-        required: false
 
 env:
   dir: 'scancode/snapshot-file-change'
@@ -17,29 +12,13 @@ jobs:
     name: Scan code for licenses
     steps:
       - uses: 'actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9' # ratchet:actions/checkout@v3
-        with:
-          fetch-depth: 0 # OR "2" -> To retrieve the preceding commit.
-      - name: 'Get changed files'
-        id: 'changed-files'
-        uses: 'tj-actions/changed-files@fb20f4d24890fadc539505b1746d260504b213d0' # ratchet:tj-actions/changed-files@v36
-      - name: 'Copy changed files'
-        id: 'copy-changed-files'
-        run: |
-          sudo mkdir -p ${{ env.dir }}
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed"
-            sudo cp --parents $file ${{ env.dir }}
-            echo "$file was copied to ${{ env.dir }}"
-          done
-      - run: |
-          ls .
       - name: Scan the code
         id: scancode
         uses: sqin2019/scancode@main
-        with:
-          directory-to-scan: '${{ env.dir }}'
-          config: '${{ inputs.config || ''default_license_config.yml''}}'
 
-      - name: Verify
+      - name: 'json'
         run: |
-          test ! -s ./artifacts/report.txt || (cat ./artifacts/report.txt && exit 1 )
+          cat ./artifacts/scancode.json
+      - name: 'cvs'
+        run: |
+          cat ./artifacts/scancode.json

@@ -11,7 +11,4 @@ cd /scancode-toolkit
 	--verbose /github/workspace/$1 \
 	--processes `expr $(nproc --all) - 1` \
 	--json /github/workspace/artifacts/scancode.json \
-	--html /github/workspace/artifacts/scancode.html
-
-
-python /license_check.py -c /github/workspace/$2 -s /github/workspace/artifacts/scancode.json  -f /github/workspace/$1 -o /github/workspace/artifacts/report.txt
+	--csv /github/workspace/artifacts/scancode.csv
