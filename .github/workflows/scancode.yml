@@ -18,7 +18,7 @@ on:
   workflow_dispatch:
     inputs:
       directory-to-scan:
-        description: 'Which directory to scan'
+        description: 'Which directory to scan, omit to scan the whole repo.'
         required: false
         type: 'string'
       commands:
