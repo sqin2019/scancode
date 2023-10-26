@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: reusable-scancode
+name: scancode
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       directory-to-scan:
         description: 'Which directory to scan'
@@ -28,9 +28,6 @@ on:
         type: 'string'
         default: '--license --package --copyright --license-score=70'
 
-env:
-  dir: 'scancode/snapshot-file-change'
-
 jobs:
   scancode_job:
     runs-on: ubuntu-latest
@@ -38,13 +35,14 @@ jobs:
     steps:
       - uses: 'actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9' # ratchet:actions/checkout@v3
       - name: Scan the code
+        id: 'scancode'
         uses: sqin2019/scancode@main
         with:
           directory-to-scan: '${{ inputs.directory-to-scan }}'
           commands: '${{ inputs.commands }}'
       - name: 'json'
         run: |
-          cat ./artifacts/scancode.json
+          cat ${{ steps.scancode.output.json }}
       - name: 'cvs'
         run: |
-          cat ./artifacts/scancode.csv
+          cat ${{ steps.scancode.output.csv }}
