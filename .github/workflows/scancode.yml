@@ -15,10 +15,10 @@
 name: scancode
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       directory-to-scan:
-        description: 'Which directory to scan, omit to scan the whole repo.'
+        description: 'Which directory to scan, omit to scan the entire repo.'
         required: false
         type: 'string'
       commands:
@@ -30,28 +30,21 @@ on:
 jobs:
   scancode_job:
     runs-on: ubuntu-latest
-    name: Scan code for licenses
+    name: Scan code for licenses and copyrights
+    permissions:
+      contents: 'read'
     steps:
-      - run: |
-          mkdir -p directory-to-scan
-          ls -al
+      - run: 'mkdir -p dir'
       - uses: 'actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9' # ratchet:actions/checkout@v3
         with:
-          path: 'directory-to-scan'
+          path: 'dir'
       - name: Scan the code
         id: 'scancode'
         uses: sqin2019/scancode@main
         with:
-          directory-to-scan: './directory-to-scan/${{ inputs.directory-to-scan }}'
+          directory-to-scan: 'dir/${{ inputs.directory-to-scan }}'
           commands: '${{ inputs.commands }}'
-      - run: |
-          pwd .
-          ls -al
-      - run: |
-          echo ${{ github.workspace }}
-      - name: 'json'
-        run: |
-          cat ${{ steps.scancode.outputs.json }}
-      - name: 'cvs'
-        run: |
-          cat ${{ steps.scancode.outputs.csv }}
+      - name: 'output result in json format'
+        run: 'cat ${{ steps.scancode.outputs.json }}'
+      - name: 'output result in cvs format'
+        run: 'cat ${{ steps.scancode.outputs.csv }}'
