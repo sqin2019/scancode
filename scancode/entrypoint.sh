@@ -17,7 +17,7 @@ cd /scancode-toolkit
 
 touch /github/workspace/fail.txt
 
-./scancode /github/workspace/$1 \
+./scancode "/github/workspace/$1" \
 	--json /github/workspace/scancode.json \
 	--csv /github/workspace/scancode.csv \
 	$2 2> /github/workspace/fail.txt
