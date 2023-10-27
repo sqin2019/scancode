@@ -15,7 +15,7 @@
 name: scancode
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       directory-to-scan:
         description: 'Which directory to scan, omit to scan the entire repo.'
