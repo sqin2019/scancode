@@ -20,7 +20,7 @@ touch /github/workspace/fail.txt
 ./scancode "/github/workspace/$1" \
 	--json /github/workspace/scancode.json \
 	--csv /github/workspace/scancode.csv \
-	$2 2> /github/workspace/fail.txt
+	$2 2>&1 | tee /github/workspace/fail.txt
 
 if test -s  /github/workspace/fail.txt; then
 	exit 1
