@@ -1,12 +1,10 @@
 #!/bin/sh -l
 
-mkdir /github/workspace/artifacts
-
 cd /scancode-toolkit
 
 ./scancode /github/workspace/$1 \
-	--json /github/workspace/artifacts/scancode.json \
-	--csv /github/workspace/artifacts/scancode.csv \
+	--json /github/workspace/scancode.json \
+	--csv /github/workspace/scancode.csv \
   $2
 
 pwd .
