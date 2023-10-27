@@ -44,7 +44,11 @@ jobs:
         with:
           directory-to-scan: 'dir/${{ inputs.directory-to-scan }}'
           commands: '${{ inputs.commands }}'
-      - name: 'output result in json format'
+      - uses: actions/upload-artifact@v3
+        with:
+          name: 'json output'
+          path: '${{ steps.scancode.outputs.json }}'
+      - name: 'Output result in json format'
         run: 'cat ${{ steps.scancode.outputs.json }}'
-      - name: 'output result in cvs format'
+      - name: 'Output result in cvs format'
         run: 'cat ${{ steps.scancode.outputs.csv }}'
