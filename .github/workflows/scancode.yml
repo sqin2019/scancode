@@ -40,7 +40,7 @@ jobs:
           path: 'dir'
       - name: Scan the code
         id: 'scancode'
-        uses: sqin2019/scancode@main
+        uses: sqin2019/scancode/.github/actions/scancode@sqin/test
         with:
           directory-to-scan: 'dir/${{ inputs.directory-to-scan }}'
           commands: '${{ inputs.commands }}'
