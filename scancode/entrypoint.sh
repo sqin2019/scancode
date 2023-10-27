@@ -22,7 +22,7 @@ touch /github/workspace/fail.txt
 	--csv /github/workspace/scancode.csv \
 	$2 2> /github/workspace/fail.txt
 
-if test ! -s  /github/workspace/fail.txt; then
+if test -s  /github/workspace/fail.txt; then
 	exit 1
 fi
 
