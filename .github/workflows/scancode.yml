@@ -22,15 +22,6 @@ on:
         required: false
         type: 'string'
         default: 'main'
-      directory-to-scan:
-        description: 'Which directory to scan, omit to scan the entire repo.'
-        required: false
-        type: 'string'
-      commands:
-        description: 'Scancode commands'
-        required: false
-        type: 'string'
-        default: '--license --package --copyright --license-score=70'
 
 jobs:
   scancode_job:
@@ -48,8 +39,7 @@ jobs:
         id: 'scancode'
         uses: sqin2019/scancode@main
         with:
-          directory-to-scan: 'dir/${{ inputs.directory-to-scan }}'
-          commands: '${{ inputs.commands }}'
+          directory-to-scan: 'dir'
       - uses: actions/upload-artifact@v3
         with:
           name: 'json output'
