@@ -15,10 +15,13 @@
 
 cd /scancode-toolkit
 
-./scancode /github/workspace/$1 \
+if [[ $(./scancode /github/workspace/$1 \
 	--json /github/workspace/scancode.json \
 	--csv /github/workspace/scancode.csv \
-  $2
+  $2) -ne 0]]; then
+	echo "scancode failed"
+	exit 1
+fi
 
 pwd .
 ls /github/workflow -al
