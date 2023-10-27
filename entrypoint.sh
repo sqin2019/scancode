@@ -10,7 +10,7 @@ cd /scancode-toolkit
 pwd .
 ls /github/workflow -al
 
-echo "json=artifacts/scancode.json" >> $GITHUB_OUTPUT
-echo "csv=artifacts/scancode.csv" >> $GITHUB_OUTPUT
+echo "json=scancode.json" >> $GITHUB_OUTPUT
+echo "csv=scancode.csv" >> $GITHUB_OUTPUT
 
 # python /license_check.py -c /github/workspace/license_config.yml -s /github/workspace/artifacts/scancode.json  -f /github/workspace/$1 -o /github/workspace/artifacts/report.txt
