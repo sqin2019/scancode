@@ -46,9 +46,7 @@ jobs:
           commands: '${{ inputs.commands }}'
       - uses: actions/upload-artifact@v3
         with:
-          name: 'json output'
-          path: '${{ steps.scancode.outputs.json }}'
-      - name: 'Output result in json format'
-        run: 'cat ${{ steps.scancode.outputs.json }}'
-      - name: 'Output result in cvs format'
-        run: 'cat ${{ steps.scancode.outputs.csv }}'
+          name: 'scancode output'
+          path: |
+            ${{ steps.scancode.outputs.json }}
+            ${{ steps.scancode.outputs.csv }}
