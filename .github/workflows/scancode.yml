@@ -34,15 +34,15 @@ jobs:
     permissions:
       contents: 'read'
     steps:
-      - run: 'mkdir -p dir'
+      - run: 'mkdir -p ${{ github.repository }}'
       - uses: 'actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9' # ratchet:actions/checkout@v3
         with:
-          path: 'dir'
+          path: '${{ github.repository }}'
       - name: Scan the code
         id: 'scancode'
         uses: sqin2019/scancode/.github/actions/scancode@sqin/test
         with:
-          directory-to-scan: 'dir/${{ inputs.directory-to-scan }}'
+          directory-to-scan: '${{ github.repository }}/${{ inputs.directory-to-scan }}'
           commands: '${{ inputs.commands }}'
       - uses: actions/upload-artifact@v3
         with:
