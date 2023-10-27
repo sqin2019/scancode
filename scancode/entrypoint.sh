@@ -15,16 +15,11 @@
 
 cd /scancode-toolkit
 
-if [[ $(./scancode /github/workspace/$1 \
-	--json /github/workspace/scancode.json \
-	--csv /github/workspace/scancode.csv \
-  $2) -ne 0]]; then
+if [[ $(./scancode /github/workspace/$1 --json /github/workspace/scancode.json --csv /github/workspace/scancode.csv $2) -ne 0 ]]; then
 	echo "scancode failed"
 	exit 1
 fi
 
-pwd .
-ls /github/workflow -al
 
 echo "json=scancode.json" >> $GITHUB_OUTPUT
 echo "csv=scancode.csv" >> $GITHUB_OUTPUT
