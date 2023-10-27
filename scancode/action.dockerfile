@@ -16,6 +16,6 @@ ENV PATH=$HOME/scancode-toolkit:$PATH
 
 RUN pip3 install pyyaml
 
-COPY entrypoint.sh /entrypoint.sh
+COPY scancode/entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
